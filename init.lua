@@ -28,6 +28,7 @@ return setmetatable({
 	mouseReleasedOn = function(...) return instance:mouseReleasedOn(...) end,
 	updateMouse = function(...) return instance:updateMouse(...) end,
 	getMousePosition = function(...) return instance:getMousePosition(...) end,
+	setWindowScale = function(...) return instance:setWindowScale(...) end,
 
 	getPressedKey = function(...) return instance:getPressedKey(...) end,
 	keypressed = function(...) return instance:keypressed(...) end,

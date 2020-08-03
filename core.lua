@@ -4,6 +4,8 @@ local NONE = {}
 local BASE = (...):match('(.-)[^%.]+$')
 local default_theme = require(BASE..'theme')
 
+local windowscale = {x=1,y=1}
+
 local suit = {}
 suit.__index = suit
 
@@ -184,10 +186,14 @@ function suit:enterFrame()
 	end
 
 	self.hovered_last, self.hovered = self.hovered, nil
-	self:updateMouse(love.mouse.getX(), love.mouse.getY(), love.mouse.isDown(1))
+	self:updateMouse(love.mouse.getX()/windowscale.x, love.mouse.getY()/windowscale.y, love.mouse.isDown(1))
 	self.key_down, self.textchar = nil, ""
 	self:grabKeyboardFocus(NONE)
 	self.hit = nil
+end
+
+function suit:setWindowScale(x, y)
+	windowscale.x, windowscale.y = x, y
 end
 
 function suit:exitFrame()
